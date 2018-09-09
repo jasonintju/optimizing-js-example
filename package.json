@@ -1,6 +1,11 @@
 {
   "name": "optimizing-js",
   "version": "1.0.0",
+  "sideEffects": [
+    "*.css",
+    "*.scss",
+    "*.sass"
+  ],
   "description": "",
   "private": true,
   "scripts": {
@@ -32,8 +37,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "lodash": "^4.17.10",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-loadable": "^5.5.0",
     "react-router-dom": "^4.3.1"
   }
 }

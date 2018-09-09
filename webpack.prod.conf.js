@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const merge = require('webpack-merge');
@@ -8,7 +9,7 @@ const prodConfig = merge(baseConfig, {
     filename: '[name].[contenthash:8].js'
   },
   mode: 'production',
-  plugins: [new BundleAnalyzerPlugin()]
+  plugins: [new webpack.HashedModuleIdsPlugin(), new BundleAnalyzerPlugin()]
 });
 
 prodConfig.plugins.unshift(new CleanWebpackPlugin(['dist']));

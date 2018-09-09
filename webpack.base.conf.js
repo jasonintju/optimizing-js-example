@@ -32,6 +32,30 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    runtimeChunk: {
+      name: 'manifest'
+    },
+    splitChunks: {
+      cacheGroups: {
+        venders: {
+          test: /node_modules\/(?!(lodash)\/)/, // 去除 lodash，剩余的第三方库打成一个包，命名为 vendors-common
+          name: 'vendors-common',
+          chunks: 'all'
+        },
+        lodash: {
+          test: /node_modules\/lodash\//, // lodash 库单独打包，并命名为 vender-lodash
+          name: 'vender-lodash'
+        },
+        default: {
+          minSize: 0,
+          minChunks: 2,
+          reuseExistingChunk: true,
+          name: 'utils'
+        }
+      }
+    }
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'optimizing-js',
